@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 
-const TextAvatar = ({ text = '' }) => {
+const TextAvatar = ({ text = "" }) => {
   const stringToColor = (str) => {
     let hash = 0;
     let i;
@@ -19,14 +19,19 @@ const TextAvatar = ({ text = '' }) => {
     return color;
   };
 
+  const checkUndefinedText = (text) => {
+    if (text.includes("undefined")) return "";
+  };
   return (
     <Avatar
       sx={{
         backgroundColor: stringToColor(text),
         width: 40,
-        height: 40
+        height: 40,
       }}
-      children={`${text.split(" ")?.[0]?.[0]}${text.split(" ")?.[1]?.[0]}`}
+      children={checkUndefinedText(
+        `${text.split(" ")?.[0]?.[0]}${text.split(" ")?.[1]?.[0]}`
+      )}
     />
   );
 };
